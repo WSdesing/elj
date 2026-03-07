@@ -232,66 +232,135 @@
     font-weight: bold;
     text-transform: lowercase; }
     
-    /* ================= AJUSTES PARA CELULAR (MOBILE) ================= */
-        @media (max-width: 768px) {
-            /* Header e Logo */
-            header { padding: 15px 5%; }
-            .logo-text { font-size: 1.2rem; }
-            nav { display: none; } /* Esconde menu padrão para mobile se não houver menu hambúrguer */
+    /* ================= AJUSTES EXCLUSIVOS PARA CELULAR ================= */
+@media (max-width: 768px) {
+    /* Ajusta o espaçamento lateral geral */
+    header, .macaco, .tech-section, .portfolio, footer {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        
+    }
+    /* ================= AJUSTE FINAL PARA CELULAR ================= */
+@media (max-width: 768px) {
+    /* Impede que o site "dance" para os lados */
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+    }
 
-            /* Hero Section */
-            .hero-content h1 { font-size: 3rem; line-height: 1; }
-            .hero-content p { font-size: 0.9rem !important; }
-            .btn-industrial { padding: 15px 30px; font-size: 0.8rem; }
+    /* Reposiciona o botão de WhatsApp para dentro da área visível */
+    .wa-btn {
+        width: 60px !important;
+        height: 60px !important;
+        bottom: 20px !important;
+        right: 20px !important; /* Fixa a 20px da borda direita real */
+        position: fixed !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 9999 !important; /* Garante que fique acima de tudo */
+    }
 
-            /* Stats (Cards que ficam em cima) */
-            .stats-container { 
-                margin-top: -40px; 
-                grid-template-columns: 1fr 1fr; /* 2 colunas no celular */
-                gap: 10px; 
-                padding: 0 5%;
-            }
-            .stat-card { padding: 20px 10px; }
-            .stat-card h3 { font-size: 1.1rem; }
+    /* Ajusta o tamanho do ícone dentro do botão */
+    .wa-btn i {
+        font-size: 30px !important;
+    }
 
-            /* Seção Sobre Nós (Macaco) */
-            .macaco { padding: 60px 5%; }
-            .oloko { flex-direction: column; gap: 30px; } /* Empilha imagem e texto */
-            .oloko-bixo { max-width: 100%; }
-            .text h1 { font-size: 2.5rem; text-align: center; }
-            .text p { text-align: center; margin: 20px auto; font-size: 1rem !important; }
+    /* Ajuste de textos que podem estar empurrando a tela */
+    .hero-content h1 {
+        font-size: 2.5rem !important;
+        word-wrap: break-word;
+    }
+}
 
-            /* Serviços Técnicos */
-            .text div[style*="grid"] { gap: 25px !important; }
-            .text i { font-size: 2rem !important; }
-            .text span[style*="font-size: 2rem"] { font-size: 1.4rem !important; }
-            .text span[style*="font-size: 1.2rem"] { font-size: 1rem !important; }
+    /* Hero: Diminui a fonte para não quebrar a tela */
+    .hero-content h1 {
+        font-size: 2.8rem !important;
+    }
 
-            /* Missão, Visão e Valores */
-            .text div[style*="grid-template-columns"] { 
-                grid-template-columns: 1fr !important; /* Um embaixo do outro */
-                text-align: center; 
-            }
+    /* Stats: Coloca 2 por linha em vez de 4 */
+    .stats-container {
+        grid-template-columns: 1fr 1fr !important;
+        margin-top: -30px !important;
+    }
 
-            /* Seção Compromisso */
-            .tech-section { padding: 60px 5%; }
-            .tech-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-            .tech-text h2 { font-size: 2rem; }
+    /* Seção Sobre (Macaco): Empilha a foto e o texto */
+    .oloko {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .oloko-bixo, .text {
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .text h1 {
+        text-align: center !important;
+        font-size: 2.5rem !important;
+    }
 
-            /* Portfólio */
-            .portfolio { padding: 60px 5%; }
-            .portfolio-header h2 { font-size: 2.2rem; }
-            .gallery-grid { grid-template-columns: 1fr; } /* Fotos ocupam a largura toda */
+    /* Ajusta os itens de serviço para ficarem centralizados */
+    .text div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
 
-            /* Footer */
-            footer { padding: 60px 5% 40px; text-align: center; }
-            footer div[style*="display: grid"] { gap: 40px; }
-            footer div[style*="display: flex"] { justify-content: center; } /* Centraliza redes sociais */
-            
-            /* Botão WhatsApp */
-            .wa-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
-        }
+    /* Missão, Visão e Valores: Um embaixo do outro */
+    div[style*="grid-template-columns: repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+    }
+
+    /* Portfólio: 1 foto por linha para melhor visualização */
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Footer: Empilha as colunas de contato e endereço */
+    footer div[style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 40px !important;
+    }
     
+    /* Centraliza as redes sociais no celular */
+    footer div[style*="display: flex"] {
+        justify-content: center !important;
+    }
+
+    /* Esconde o menu de texto no topo para não embolar com a logo */
+    nav {
+        display: none !important;
+    }
+}
+    @media (max-width: 768px) {
+    /* Ajuste de Títulos */
+    h1, h2 { 
+        font-size: 2.2rem !important; 
+        text-align: center !important; 
+    }
+
+    /* Empilhamento de Colunas */
+    .oloko, .tech-grid, footer > div { 
+        flex-direction: column !important; 
+        display: block !important;
+        text-align: center !important;
+    }
+
+    /* Ajuste de Imagens */
+    .oloko-bixo, .tech-image { 
+        max-width: 100% !important; 
+        margin-bottom: 20px; 
+    }
+
+    /* Ajuste de Serviços (Baseado no documento técnico) */
+    .text div[style*="display: flex"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 15px;
+    }
+}
     </style>
 </head>
 <body>
