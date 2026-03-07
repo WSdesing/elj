@@ -231,6 +231,67 @@
         .text span{color: var(--primary); 
     font-weight: bold;
     text-transform: lowercase; }
+    
+    /* ================= AJUSTES PARA CELULAR (MOBILE) ================= */
+        @media (max-width: 768px) {
+            /* Header e Logo */
+            header { padding: 15px 5%; }
+            .logo-text { font-size: 1.2rem; }
+            nav { display: none; } /* Esconde menu padrão para mobile se não houver menu hambúrguer */
+
+            /* Hero Section */
+            .hero-content h1 { font-size: 3rem; line-height: 1; }
+            .hero-content p { font-size: 0.9rem !important; }
+            .btn-industrial { padding: 15px 30px; font-size: 0.8rem; }
+
+            /* Stats (Cards que ficam em cima) */
+            .stats-container { 
+                margin-top: -40px; 
+                grid-template-columns: 1fr 1fr; /* 2 colunas no celular */
+                gap: 10px; 
+                padding: 0 5%;
+            }
+            .stat-card { padding: 20px 10px; }
+            .stat-card h3 { font-size: 1.1rem; }
+
+            /* Seção Sobre Nós (Macaco) */
+            .macaco { padding: 60px 5%; }
+            .oloko { flex-direction: column; gap: 30px; } /* Empilha imagem e texto */
+            .oloko-bixo { max-width: 100%; }
+            .text h1 { font-size: 2.5rem; text-align: center; }
+            .text p { text-align: center; margin: 20px auto; font-size: 1rem !important; }
+
+            /* Serviços Técnicos */
+            .text div[style*="grid"] { gap: 25px !important; }
+            .text i { font-size: 2rem !important; }
+            .text span[style*="font-size: 2rem"] { font-size: 1.4rem !important; }
+            .text span[style*="font-size: 1.2rem"] { font-size: 1rem !important; }
+
+            /* Missão, Visão e Valores */
+            .text div[style*="grid-template-columns"] { 
+                grid-template-columns: 1fr !important; /* Um embaixo do outro */
+                text-align: center; 
+            }
+
+            /* Seção Compromisso */
+            .tech-section { padding: 60px 5%; }
+            .tech-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .tech-text h2 { font-size: 2rem; }
+
+            /* Portfólio */
+            .portfolio { padding: 60px 5%; }
+            .portfolio-header h2 { font-size: 2.2rem; }
+            .gallery-grid { grid-template-columns: 1fr; } /* Fotos ocupam a largura toda */
+
+            /* Footer */
+            footer { padding: 60px 5% 40px; text-align: center; }
+            footer div[style*="display: grid"] { gap: 40px; }
+            footer div[style*="display: flex"] { justify-content: center; } /* Centraliza redes sociais */
+            
+            /* Botão WhatsApp */
+            .wa-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+        }
+    
     </style>
 </head>
 <body>
