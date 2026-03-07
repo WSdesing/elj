@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS Engenharia & Projetos | Solidez e Inovação</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;900&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        :root {
+            /* NOVA PALETA DE CORES: NAVY & GOLD */
+            --primary: #C5A059; /* Dourado Champagne / Bronze */
+            --primary-glow: rgba(197, 160, 89, 0.3);
+            --dark-bg: #0A0F1A; /* Azul Marinho quase preto */
+            --dark-card: #131A29; /* Azul Marinho Profundo */
+            --text-light: #F4F4F4;
+            --text-gray: #A0A5B0;
+            --border-color: rgba(197, 160, 89, 0.2);
+            --accent-blue: #1E2A44;
+        }
+
+        /* Reset e Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--dark-bg); 
+            color: var(--text-light); 
+            overflow-x: hidden; 
+        }
+
+        /* Background Decorativo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(197, 160, 89, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed; width: 100%; top: 0; z-index: 2000;
+            padding: 30px 8%; display: flex; justify-content: space-between; align-items: center;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        header.scrolled {
+            background: rgba(10, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 8%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-box {
+            width: 60px; /* Aumentei um pouco para dar destaque */
+            height: 60px; 
+            border-radius: 50%; 
+            border: 2px solid var(--primary); /* Borda dourada fina */
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            overflow: hidden; 
+            background: #fff; /* Fundo branco para a logo aparecer bem */
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+        .logo-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Faz a imagem preencher o círculo sem achatar */
+        }
+        
+        .logo-text { font-family: 'Oswald'; font-size: 1.5rem; letter-spacing: 3px; font-weight: 700; }
+        .logo-text span { color: var(--primary); }
+
+        nav ul { display: flex; gap: 40px; }
+        nav a { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; color: var(--text-light); text-decoration: none;}
+        nav a:hover { opacity: 1; color: var(--primary); }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(10,15,26,0.7), rgba(10,15,26,0.95)), url('2.png') center/cover no-repeat;
+            z-index: -1; transform: scale(1.1); animation: zoomHero 20s infinite alternate;
+        }
+        @keyframes zoomHero { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+        .hero-content { text-align: center; max-width: 900px; z-index: 10; padding: 0 20px;}
+        .hero-content h1 { 
+            font-size: clamp(3rem, 10vw, 7rem); 
+            line-height: 0.9; 
+            margin-bottom: 20px;
+            font-weight: 900;
+            color: var(--text-light);
+        }
+        .hero-content h1 b { color: var(--primary); }
+
+        .btn-industrial {
+            padding: 18px 45px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-industrial:hover {
+            background: var(--primary);
+            color: var(--dark-bg);
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        /* STATS */
+        .stats-container {
+            padding: 0 8%;
+            margin-top: -80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            position: relative; z-index: 100;
+        }
+        .stat-card {
+            background: var(--dark-card);
+            padding: 40px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            border-bottom: 3px solid var(--primary);
+            text-align: center;
+            transition: 0.4s;
+        }
+        .stat-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .stat-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+        .stat-card h3 { font-size: 1.8rem; margin-top: 10px; color: var(--text-light); }
+
+        /* SEÇÃO TÉCNICA */
+        .tech-section { padding: 120px 8%; }
+        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        
+        .tech-image { position: relative; border-left: 10px solid var(--primary); }
+        .tech-image img { width: 100%; filter: grayscale(30%); }
+
+        .tech-text h2 { font-size: 3rem; color: var(--text-light); }
+        .tech-text span { color: var(--primary); }
+
+        /* ================= NOVA ABA DE FOTOS (PORTFOLIO) ================= */
+        .portfolio { padding: 100px 8%; background: #070B14; }
+        .portfolio-header { text-align: center; margin-bottom: 60px; }
+        .portfolio-header h2 { font-family: 'Oswald'; font-size: 3rem; letter-spacing: 2px; }
+        .portfolio-header h2 span { color: var(--primary); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative; height: 350px; overflow: hidden; border-radius: 4px;
+            border: 1px solid var(--border-color); cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.6);
+        }
+        .gallery-item:hover img { transform: scale(1.1); filter: brightness(1); }
+        
+        .gallery-overlay {
+            position: absolute; inset: 0; background: linear-gradient(transparent, rgba(10,15,26,0.9));
+            display: flex; align-items: flex-end; padding: 25px; opacity: 0; transition: 0.4s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h4 { color: var(--primary); font-size: 1.2rem; }
+
+        /* LIGHTBOX PARA AMPLIAR FOTOS */
+        #lightbox {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            display: none; align-items: center; justify-content: center; z-index: 5000;
+        }
+        #lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--primary); }
+        /* ================================================================= */
+
+        /* FOOTER */
+        footer { background: #05080F; border-top: 1px solid var(--border-color); }
+        .footer-logo h2 span { color: var(--primary); }
+        .contact-link:hover { color: var(--primary); }
+
+        /* WhatsApp */
+        .wa-btn { background: #25d366; color: white; border-radius: 50%; width: 65px; height: 65px; }
+
+        @media (max-width: 968px) {
+            .tech-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 3.5rem; }
+         
+        }
+        .oloko-bixo{ flex: 1;                
+            max-width: 50%;;
+        }
+        .oloko{display: flex;          
+               align-items: flex-start; 
+               width: 100%; 
+           gap: 40px;}
+        
+           .macaco{ align-items: flex-start; padding: 120px 8%;}
+        
+           .oloko-bixo img{width: 100%;
+                           height: auto; 
+                           filter: grayscale(30%);}
+        .text  {flex:1;}
+        .text h1{font-size: 3.5rem;      
+                 color: var(--text-light);
+                 text-align: left;    
+                 margin: 0;              
+                 line-height: 1;}
+
+        .text span{color: var(--primary); 
+    font-weight: bold;
+    text-transform: lowercase; }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="logo-area">
+            <div class="logo-box">
+                <img src="logo.png" alt="EJS Engenharia">
+            </div>
+            <div class="logo-text">EJS <span>ENGENHARIA</span></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">A Empresa</a></li>
+                <li><a href="#obras">Obras</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span style="letter-spacing: 8px; color: var(--primary); font-weight: 700; text-transform: uppercase;">Excelência e Rigor</span>
+            <h1><b>EJS</b> PROJETOS<br>ENGENHARIA</h1>
+            <p style="color: var(--text-gray); margin-top: 20px; font-size: 1.1rem; letter-spacing: 2px;">CONSTRUINDO O FUTURO COM SOLIDEZ TÉCNICA</p>
+            <div style="margin-top: 40px;">
+                <a href="#obras" class="btn-industrial">Ver Portfólio de Luxo</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <i class="fas fa-layer-group"></i>
+            <span style="color: var(--primary); font-weight: 600;">PROJETOS</span>
+            <h3>EXCLUSIVOS</h3>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-compass"></i>
+            <span style="color: var(--primary); font-weight: 600;">ENGENHARIA</span>
+            <h3>PRECISA</h3>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-medal"></i>
+            <span style="color: var(--primary); font-weight: 600;">PADRÃO</span>
+            <h3>SUPERIOR</h3>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-building"></i>
+            <span style="color: var(--primary); font-weight: 600;">ENTREGA</span>
+            <h3>PONTUAL</h3>
+        </div>
+    </div>
+     
+    
+    <section class="macaco" id="sobre nos">
+     <div class="oloko">
+     <div class="oloko-bixo">
+        <img src="WhatsApp Image 2026-03-04 at 14.44.35.jpeg" alt="projetos">
+     </div>
+      <div class="text">
+
+            
+            <div class="text">
+                <h1><span>sobre nós</span></h1>
+                
+                <p style="color: var(--text-gray); margin-top: 25px; font-size: 1.2rem; line-height: 1.6; letter-spacing: 1px; max-width: 90%;">
+                    A <strong>EJS Engenharia & Projetos</strong> garante conformidade e excelência técnica em:
+                </p>
+
+                <div style="margin-top: 40px; display: grid; gap: 35px;">
+                    
+                    <div style="display: flex; align-items: center; gap: 20px; color: var(--text-light);">
+                        <i class="fas fa-microchip" style="color: var(--primary); font-size: 2.8rem;"></i>
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-family: 'Oswald'; font-size: 2rem; text-transform: uppercase; color: var(--primary); line-height: 1.1;">Instalações Elétricas</span>
+                            <span style="font-size: 1.2rem; opacity: 0.8;">Montagem, manutenção e comércio especializado.</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 20px; color: var(--text-light);">
+                        <i class="fas fa-faucet" style="color: var(--primary); font-size: 2.8rem;"></i>
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-family: 'Oswald'; font-size: 2rem; text-transform: uppercase; color: var(--primary); line-height: 1.1;">Sistemas Hidráulicos</span>
+                            <span style="font-size: 1.2rem; opacity: 0.8;">Instalações sanitárias, de gás e infraestrutura.</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 20px; color: var(--text-light);">
+                        <i class="fas fa-wind" style="color: var(--primary); font-size: 2.8rem;"></i>
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-family: 'Oswald'; font-size: 2rem; text-transform: uppercase; color: var(--primary); line-height: 1.1;">Climatização</span>
+                            <span style="font-size: 1.2rem; opacity: 0.8;">Ar condicionado central e sistemas de ventilação.</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 20px; color: var(--text-light);">
+                        <i class="fas fa-paint-roller" style="color: var(--primary); font-size: 2.8rem;"></i>
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-family: 'Oswald'; font-size: 2rem; text-transform: uppercase; color: var(--primary); line-height: 1.1;">Acabamento de Luxo</span>
+                            <span style="font-size: 1.2rem; opacity: 0.8;">Gesso, estuque e pintura de alto padrão.</span>
+                        </div>
+                    </div> 
+                </div>
+
+                <div style="margin-top: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; border-top: 1px solid var(--border-color); padding-top: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 40px;">
+                    
+                    <div>
+                        <h4 style="font-family: 'Oswald'; color: var(--primary); font-size: 1.6rem; letter-spacing: 2px; margin-bottom: 15px;">MISSÃO</h4>
+                        <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.5;">Entregar soluções de engenharia com precisão técnica e estética impecável, superando expectativas em cada detalhe.</p>
+                    </div>
+
+                    <div>
+                        <h4 style="font-family: 'Oswald'; color: var(--primary); font-size: 1.6rem; letter-spacing: 2px; margin-bottom: 15px;">VISÃO</h4>
+                        <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.5;">Ser a referência nacional em projetos de alto padrão, unindo tecnologia à solidez da engenharia tradicional.</p>
+                    </div>
+
+                    <div>
+                        <h4 style="font-family: 'Oswald'; color: var(--primary); font-size: 1.6rem; letter-spacing: 2px; margin-bottom: 15px;">VALORES</h4>
+                        <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.5;">Rigor técnico, transparência absoluta, segurança normativa e compromisso total com a pontualidade.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+     </div>
+
+    </section>
+   
+   
+    <section class="tech-section" id="sobre">
+        <div class="tech-grid">
+            <div class="tech-image">
+                <img src="projeto1.png" alt="Engenharia">
+            </div>
+            <div class="tech-text">
+                <h2>O COMPROMISSO COM A <span>PERFEIÇÃO</span></h2>
+                <p style="margin: 30px 0; color: var(--text-gray); line-height: 1.8;">
+                    EJS Engenharia combina décadas de conhecimento técnico com as tecnologias mais modernas de gestão de projetos. Nosso foco é a satisfação total através de estruturas seguras e visualmente impactantes.
+                </p>
+                <a href="#contato" style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: underline;">Solicitar Consultoria Técnica</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="obras">
+        <div class="portfolio-header">
+            <h2>NOSSO <span>PORTFÓLIO</span></h2>
+            <p style="color: var(--text-gray); letter-spacing: 2px;">PROJETOS E EXECUÇÕES DE ALTO PADRÃO</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.44.35.jpeg"> <div class="gallery-overlay"><h4>Execução Técnica</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.32.jpeg"> <div class="gallery-overlay"><h4>Residencial</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.33 (1).jpeg"> <div class="gallery-overlay"><h4>Estruturas</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.33 (2).jpeg"> <div class="gallery-overlay"><h4>Acabamentos</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.33 (3).jpeg"> <div class="gallery-overlay"><h4>Interiores</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.33 (4).jpeg"> <div class="gallery-overlay"><h4>Fundação</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.33.jpeg"> <div class="gallery-overlay"><h4>Modernização</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.34 (1).jpeg"> <div class="gallery-overlay"><h4>Projetos 3D</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.34 (2).jpeg"> <div class="gallery-overlay"><h4>Infraestrutura</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.34 (3).jpeg"> <div class="gallery-overlay"><h4>Consultoria</h4></div></div>
+
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.34 (4).jpeg"> <div class="gallery-overlay"><h4>Acompanhamento</h4></div></div>
+            <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.34.jpeg"> <div class="gallery-overlay"><h4>Gestão de Obra</h4></div></div>
+        
+            
+        </div>
+    </section>
+
+    <div id="lightbox"></div>
+
+    <footer id="contato" style="padding: 100px 8% 50px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px;">
+            <div>
+                <h2 style="font-family: 'Oswald';">EJS<span>.</span></h2>
+                <p style="color: var(--text-gray); margin-top: 20px;">Transformando a paisagem urbana com responsabilidade e inovação técnica.</p>
+            </div>
+            <div>
+                <h4 style="color: var(--primary); margin-bottom: 20px;">CONTATO</h4>
+                <p style="margin-bottom: 10px; color: var(--text-gray);">(11) 98208-6644</p>
+                <p style="margin-bottom: 10px; color: var(--text-gray);">ejsengenhariaeprojetos@gmail.com</p>
+                <p style="color: var(--text-gray); line-height: 1.5;">
+                    Rua Serra da Cachoeira, 129<br>
+                    Jardim Iguatemi - São Paulo/SP<br>
+                    CEP: 08373-130
+                </p>
+            </div>
+            <div>
+                <h4 style="color: var(--primary); margin-bottom: 20px;">REDES</h4>
+                <div style="display: flex; gap: 20px; font-size: 1.2rem;">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511982086644" class="wa-btn" style="position: fixed; bottom: 30px; right: 30px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 3000; text-decoration: none;">
+        <i class="fab fa-whatsapp" style="font-size: 2rem;"></i>
+    </a>
+
+    <script>
+        window.addEventListener("scroll", function() {
+            var header = document.querySelector("header");
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        });
+
+        // Lightbox para ampliar as fotos
+        const lightbox = document.getElementById('lightbox');
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.onclick = () => {
+                lightbox.style.display = 'flex';
+                lightbox.innerHTML = <img src="${img.src}">;
+            };
+        });
+        lightbox.onclick = () => lightbox.style.display = 'none';
+
+        ScrollReveal().reveal('.stat-card', { interval: 150, origin: 'bottom', distance: '50px' });
+        ScrollReveal().reveal('.tech-image', { origin: 'left', distance: '50px' });
+        ScrollReveal().reveal('.gallery-item', { interval: 100, origin: 'bottom', distance: '30px' });
+    </script>
+</body>
+</html>
