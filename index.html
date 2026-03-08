@@ -369,6 +369,17 @@
         margin-bottom: 15px;
     }
 }
+.card-trabalho:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(197, 160, 89, 0.1);
+        border-color: var(--primary) !important;
+    }
+    .card-trabalho img {
+        transition: 0.6s;
+    }
+    .card-trabalho:hover img {
+        transform: scale(1.1);
+    }
     </style>
 </head>
 <body>
@@ -502,7 +513,56 @@
      </div>
 
     </section>
-   
+   <section class="trabalhos-executados" style="padding: 100px 8%; background: linear-gradient(180deg, #0A0F1A 0%, #05080F 100%);">
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 60px;">
+        <span style="color: var(--primary); letter-spacing: 5px; text-transform: uppercase; font-weight: 600; font-size: 0.9rem;">Cronograma de Obra</span>
+        <h2 style="font-family: 'Oswald'; font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 10px;">TRABALHOS <span>EXECUTADOS EM CAMPO</span></h2>
+        <div style="width: 80px; height: 3px; background: var(--primary); margin-top: 20px;"></div>
+    </div>
+
+    <div class="trabalhos-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+        
+        <div class="card-trabalho" style="background: var(--dark-card); border: 1px solid var(--border-color); padding: 20px; transition: 0.4s;">
+            <div style="width: 100%; height: 400px; overflow: hidden; margin-bottom: 20px; border-bottom: 2px solid var(--primary);">
+                <img src="mac.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Oswald'; color: var(--primary); letter-spacing: 1px; text-transform: uppercase;">Infraestrutura & Redes</h3>
+            <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 10px; line-height: 1.6;">
+                Implementação de sistemas de cabeamento estruturado e climatização central em ambiente corporativo de alto desempenho.
+            </p>
+            <div style="margin-top: 20px; font-size: 0.8rem; color: var(--text-light); opacity: 0.6;">
+                <i class="fas fa-check-circle" style="color: var(--primary);"></i> Finalizado em 2026
+            </div>
+        </div>
+
+        <div class="card-trabalho" style="background: var(--dark-card); border: 1px solid var(--border-color); padding: 20px; transition: 0.4s;">
+            <div style="width: 100%; height: 400px; overflow: hidden; margin-bottom: 20px; border-bottom: 2px solid var(--primary);">
+                <img src="mc2.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Oswald'; color: var(--primary); letter-spacing: 1px; text-transform: uppercase;">Revitalização de Fachada</h3>
+            <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 10px; line-height: 1.6;">
+                Aplicação de revestimentos técnicos e sinalização em estrutura comercial, priorizando a estética moderna e durabilidade.
+            </p>
+            <div style="margin-top: 20px; font-size: 0.8rem; color: var(--text-light); opacity: 0.6;">
+                <i class="fas fa-check-circle" style="color: var(--primary);"></i> Entrega Concluída
+            </div>
+        </div>
+
+        <div class="card-trabalho" style="background: var(--dark-card); border: 1px solid var(--border-color); padding: 20px; transition: 0.4s;">
+            <div style="width: 100%; height: 400px; overflow: hidden; margin-bottom: 20px; border-bottom: 2px solid var(--primary);">
+                <img src="mc3.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="font-family: 'Oswald'; color: var(--primary); letter-spacing: 1px; text-transform: uppercase;">Interiores & Iluminação</h3>
+            <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 10px; line-height: 1.6;">
+                Execução de gesso acartonado com fita de LED embutida e acabamento em cimento queimado de alto padrão.
+            </p>
+            <div style="margin-top: 20px; font-size: 0.8rem; color: var(--text-light); opacity: 0.6;">
+                <i class="fas fa-check-circle" style="color: var(--primary);"></i> Rigor Normativo Aplicado
+            </div>
+        </div>
+
+    </div>
+</section>
    
     <section class="tech-section" id="sobre">
         <div class="tech-grid">
