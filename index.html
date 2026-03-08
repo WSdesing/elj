@@ -12,18 +12,18 @@
 
     <style>
         :root {
-            /* NOVA PALETA DE CORES: NAVY & GOLD */
-            --primary: #C5A059; /* Dourado Champagne / Bronze */
+            
+            --primary: #C5A059; 
             --primary-glow: rgba(197, 160, 89, 0.3);
-            --dark-bg: #0A0F1A; /* Azul Marinho quase preto */
-            --dark-card: #131A29; /* Azul Marinho Profundo */
+            --dark-bg: #0A0F1A; 
+            --dark-card: #131A29;
             --text-light: #F4F4F4;
             --text-gray: #A0A5B0;
             --border-color: rgba(197, 160, 89, 0.2);
             --accent-blue: #1E2A44;
         }
 
-        /* Reset e Base */
+       
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
         html { scroll-behavior: smooth; }
         body { 
@@ -33,7 +33,7 @@
             overflow-x: hidden; 
         }
 
-        /* Background Decorativo */
+       
         body::before {
             content: "";
             position: fixed;
@@ -45,7 +45,7 @@
             z-index: -1;
         }
 
-        /* HEADER */
+        
         header {
             position: fixed; width: 100%; top: 0; z-index: 2000;
             padding: 30px 8%; display: flex; justify-content: space-between; align-items: center;
@@ -60,21 +60,21 @@
 
         .logo-area { display: flex; align-items: center; gap: 15px; }
         .logo-box {
-            width: 60px; /* Aumentei um pouco para dar destaque */
+            width: 60px; 
             height: 60px; 
             border-radius: 50%; 
-            border: 2px solid var(--primary); /* Borda dourada fina */
+            border: 2px solid var(--primary); 
             display: flex; 
             align-items: center; 
             justify-content: center;
             overflow: hidden; 
-            background: #fff; /* Fundo branco para a logo aparecer bem */
+            background: #fff; 
             box-shadow: 0 0 15px var(--primary-glow);
         }
         .logo-box img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; /* Faz a imagem preencher o círculo sem achatar */
+            object-fit: cover; 
         }
         
         .logo-text { font-family: 'Oswald'; font-size: 1.5rem; letter-spacing: 3px; font-weight: 700; }
@@ -84,7 +84,7 @@
         nav a { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; color: var(--text-light); text-decoration: none;}
         nav a:hover { opacity: 1; color: var(--primary); }
 
-        /* HERO */
+      
         .hero {
             height: 100vh;
             display: flex; align-items: center; justify-content: center;
@@ -127,7 +127,7 @@
             box-shadow: 0 0 25px var(--primary-glow);
         }
 
-        /* STATS */
+      
         .stats-container {
             padding: 0 8%;
             margin-top: -80px;
@@ -148,7 +148,7 @@
         .stat-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
         .stat-card h3 { font-size: 1.8rem; margin-top: 10px; color: var(--text-light); }
 
-        /* SEÇÃO TÉCNICA */
+        
         .tech-section { padding: 120px 8%; }
         .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         
@@ -158,7 +158,7 @@
         .tech-text h2 { font-size: 3rem; color: var(--text-light); }
         .tech-text span { color: var(--primary); }
 
-        /* ================= NOVA ABA DE FOTOS (PORTFOLIO) ================= */
+        
         .portfolio { padding: 100px 8%; background: #070B14; }
         .portfolio-header { text-align: center; margin-bottom: 60px; }
         .portfolio-header h2 { font-family: 'Oswald'; font-size: 3rem; letter-spacing: 2px; }
@@ -187,20 +187,18 @@
         .gallery-item:hover .gallery-overlay { opacity: 1; }
         .gallery-overlay h4 { color: var(--primary); font-size: 1.2rem; }
 
-        /* LIGHTBOX PARA AMPLIAR FOTOS */
         #lightbox {
             position: fixed; inset: 0; background: rgba(0,0,0,0.95);
             display: none; align-items: center; justify-content: center; z-index: 5000;
         }
         #lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--primary); }
-        /* ================================================================= */
-
-        /* FOOTER */
+       
+      
         footer { background: #05080F; border-top: 1px solid var(--border-color); }
         .footer-logo h2 span { color: var(--primary); }
         .contact-link:hover { color: var(--primary); }
 
-        /* WhatsApp */
+       
         .wa-btn { background: #25d366; color: white; border-radius: 50%; width: 65px; height: 65px; }
 
         @media (max-width: 968px) {
@@ -232,68 +230,68 @@
     font-weight: bold;
     text-transform: lowercase; }
     
-    /* ================= AJUSTES EXCLUSIVOS PARA CELULAR ================= */
+   
 @media (max-width: 768px) {
-    /* Ajusta o espaçamento lateral geral */
+    
     header, .macaco, .tech-section, .portfolio, footer {
         padding-left: 5% !important;
         padding-right: 5% !important;
         
     }
-    /* ================= AJUSTE FINAL PARA CELULAR ================= */
+    
 @media (max-width: 768px) {
-    /* Impede que o site "dance" para os lados */
+    
     html, body {
         overflow-x: hidden;
         position: relative;
         width: 100%;
     }
-    /* 3. CARDS DE STATS (Projetos Exclusivos, etc) */
+    
     .stats-container {
         display: flex !important;
-        flex-direction: column !important; /* Empilha um embaixo do outro */
+        flex-direction: column !important; 
         gap: 15px !important;
         margin-top: -30px !important;
         padding: 0 20px !important;
     }
 
-    /* Reposiciona o botão de WhatsApp para dentro da área visível */
+    
     .wa-btn {
         width: 60px !important;
         height: 60px !important;
         bottom: 20px !important;
-        right: 20px !important; /* Fixa a 20px da borda direita real */
+        right: 20px !important; 
         position: fixed !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        z-index: 9999 !important; /* Garante que fique acima de tudo */
+        z-index: 9999 !important; 
     }
 
-    /* Ajusta o tamanho do ícone dentro do botão */
+   
     .wa-btn i {
         font-size: 30px !important;
     }
 
-    /* Ajuste de textos que podem estar empurrando a tela */
+   
     .hero-content h1 {
         font-size: 2.5rem !important;
         word-wrap: break-word;
     }
 }
 
-    /* Hero: Diminui a fonte para não quebrar a tela */
+    
     .hero-content h1 {
         font-size: 2.8rem !important;
     }
 
-    /* Stats: Coloca 2 por linha em vez de 4 */
+    
     .stats-container {
         grid-template-columns: 1fr 1fr !important;
         margin-top: -30px !important;
     }
 
-    /* Seção Sobre (Macaco): Empilha a foto e o texto */
+    
     .oloko {
         flex-direction: column !important;
         align-items: center !important;
@@ -308,61 +306,61 @@
         font-size: 2.5rem !important;
     }
 
-    /* Ajusta os itens de serviço para ficarem centralizados */
+    
     .text div[style*="display: flex"] {
         flex-direction: column !important;
         gap: 10px !important;
     }
 
-    /* Missão, Visão e Valores: Um embaixo do outro */
+   
     div[style*="grid-template-columns: repeat(auto-fit"] {
         grid-template-columns: 1fr !important;
         text-align: center !important;
     }
 
-    /* Portfólio: 1 foto por linha para melhor visualização */
+   
     .gallery-grid {
         grid-template-columns: 1fr !important;
     }
 
-    /* Footer: Empilha as colunas de contato e endereço */
+   
     footer div[style*="display: grid"] {
         grid-template-columns: 1fr !important;
         text-align: center !important;
         gap: 40px !important;
     }
     
-    /* Centraliza as redes sociais no celular */
+   
     footer div[style*="display: flex"] {
         justify-content: center !important;
     }
 
-    /* Esconde o menu de texto no topo para não embolar com a logo */
+   
     nav {
         display: none !important;
     }
 }
     @media (max-width: 768px) {
-    /* Ajuste de Títulos */
+    
     h1, h2 { 
         font-size: 2.2rem !important; 
         text-align: center !important; 
     }
 
-    /* Empilhamento de Colunas */
+    
     .oloko, .tech-grid, footer > div { 
         flex-direction: column !important; 
         display: block !important;
         text-align: center !important;
     }
 
-    /* Ajuste de Imagens */
+   
     .oloko-bixo, .tech-image { 
         max-width: 100% !important; 
         margin-bottom: 20px; 
     }
 
-    /* Ajuste de Serviços (Baseado no documento técnico) */
+    
     .text div[style*="display: flex"] {
         flex-direction: column !important;
         align-items: center !important;
@@ -599,6 +597,9 @@
 
             <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.34 (4).jpeg"> <div class="gallery-overlay"><h4>Acompanhamento</h4></div></div>
             <div class="gallery-item"><img src="WhatsApp Image 2026-03-04 at 14.46.34.jpeg"> <div class="gallery-overlay"><h4>Gestão de Obra</h4></div></div>
+            <div class="gallery-item"><img src="novo1.jpeg"> <div class="gallery-overlay"><h4>reformas</h4></div></div>
+            <div class="gallery-item"><img src="novo2.jpeg"> <div class="gallery-overlay"><h4>gestão</h4></div></div>
+            <div class="gallery-item"><img src="novvo3.jpeg"> <div class="gallery-overlay"><h4>pintura</h4></div></div>
         
             
         </div>
