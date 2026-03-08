@@ -378,6 +378,32 @@
     .card-trabalho:hover img {
         transform: scale(1.1);
     }
+    @media (max-width: 968px) {
+    .lideranca-tecnica .tech-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 50px;
+    }
+    .lideranca-tecnica .lideranca-texto {
+        order: 1 !important;
+    }
+    .lideranca-tecnica .lideranca-imagem {
+        order: 2 !important;
+        margin: 0 auto;
+        margin-top: 40px !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important
+    }
+    .lideranca-tecnica ul {
+        grid-template-columns: 1fr !important;
+        text-align: left;
+        display: inline-block !important;
+    }
+    .lideranca-tecnica ul li {
+        margin-bottom: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -511,6 +537,47 @@
      </div>
 
     </section>
+    <section class="lideranca-tecnica" style="padding: 100px 8%; background: #070B14; border-top: 1px solid var(--border-color);">
+    <div class="tech-grid" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;">
+        
+        <div class="lideranca-texto" style="order: 2;">
+            <span style="color: var(--primary); letter-spacing: 5px; text-transform: uppercase; font-weight: 600; font-size: 0.9rem;">Gestão de Precisão</span>
+            <h2 style="font-family: 'Oswald'; font-size: clamp(2rem, 5vw, 3rem); margin-top: 15px; line-height: 1.2;">
+                INTELIGÊNCIA QUE <br><span>ANTECIPA SOLUÇÕES</span>
+            </h2>
+            <div style="width: 60px; height: 3px; background: var(--primary); margin: 25px 0;"></div>
+            
+            <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+                Toda grande estrutura começa com um planejamento rigoroso. Na <strong>EJS Engenharia</strong>, cada detalhe é analisado em campo por nossa liderança técnica, garantindo que a execução siga exatamente o que foi projetado, respeitando normas de segurança e otimização de recursos.
+            </p>
+
+            <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-light);">
+                    <i class="fas fa-check" style="color: var(--primary);"></i> Leitura de Projetos
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-light);">
+                    <i class="fas fa-check" style="color: var(--primary);"></i> Gestão de Equipes
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-light);">
+                    <i class="fas fa-check" style="color: var(--primary);"></i> Cálculo Estrutural
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-light);">
+                    <i class="fas fa-check" style="color: var(--primary);"></i> Fiscalização em Tempo Real
+                </li>
+            </ul>
+        </div>
+
+        <div class="lideranca-imagem" style="order: 1; position: relative;">
+            <div style="position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; border: 2px solid var(--primary); z-index: 1;"></div>
+            <img src="elia.jpeg" alt="Liderança Técnica EJS" style="width: 100%; position: relative; z-index: 2; box-shadow: 20px 20px 0px var(--dark-card); filter: contrast(1.1);">
+            
+            <div style="position: absolute; bottom: 20px; right: -20px; background: var(--primary); color: var(--dark-bg); padding: 15px 25px; z-index: 3; font-weight: 900; font-family: 'Oswald'; text-transform: uppercase; letter-spacing: 1px;">
+                Foco no Rigor Técnico
+            </div>
+        </div>
+
+    </div>
+</section>
    <section class="trabalhos-executados" style="padding: 100px 8%; background: linear-gradient(180deg, #0A0F1A 0%, #05080F 100%);">
     <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 60px;">
         <span style="color: var(--primary); letter-spacing: 5px; text-transform: uppercase; font-weight: 600; font-size: 0.9rem;">Cronograma de Obra</span>
